@@ -24,7 +24,7 @@ namespace Fooxboy.MusicX.Core.VKontakte.Music
         {
             Api.Logger.Trace($"[CORE] Запрос к audio.search");
 
-            var music = await _api.Audio.SearchAsync(new VkNet.Model.RequestParams.AudioSearchParams()
+            var music = await _api.Audio.SearchAsync(new VkNet.Model.AudioSearchParams()//.RequestParams.AudioSearchParams()
             {
                 Query = text,
                 Autocomplete = true,
@@ -45,7 +45,7 @@ namespace Fooxboy.MusicX.Core.VKontakte.Music
         public  IList<ITrack> Tracks(string text, long count = 20, long offset = 0, bool withLyrics = false,
             bool performerOnly = false, bool searchInLibrary = true)
         {
-            var music = _api.Audio.Search(new VkNet.Model.RequestParams.AudioSearchParams()
+            var music = _api.Audio.Search(new VkNet.Model.AudioSearchParams()//RequestParams.AudioSearchParams()
             {
                 Query = text,
                 Autocomplete = true,

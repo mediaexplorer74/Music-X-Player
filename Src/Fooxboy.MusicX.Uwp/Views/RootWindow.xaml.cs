@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using VkNet.Model.GroupUpdate;
+using VkNet.Model;//.GroupUpdate;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.WindowManagement;
@@ -24,7 +24,7 @@ using Windows.UI.Xaml.Media.Animation;
 using Microsoft.Toolkit.Uwp.Helpers;
 using Windows.ApplicationModel.Core;
 using Windows.System;
-using Flurl.Http;
+//using Flurl.Http;
 using Fooxboy.MusicX.Core;
 using VkNet.AudioBypassService.Models;
 
@@ -36,7 +36,7 @@ namespace Fooxboy.MusicX.Uwp.Views
     /// <summary>
     /// Пустая страница, которую можно использовать саму по себе или для перехода внутри фрейма.
     /// </summary>
-    public sealed partial class RootWindow : Page
+    public sealed partial class RootWindow : Windows.UI.Xaml.Controls.Page
     {
         public PlayerViewModel PlayerViewModel { get; set; }
         public NavigationRootViewModel NavigationViewModel { get; set; }
@@ -91,7 +91,7 @@ namespace Fooxboy.MusicX.Uwp.Views
             //ElementCompositionPreview.SetAppWindowContent(appWindow, appWindowContentFrame);
             //await appWindow.TryShowAsync();
 
-            var theme = Application.Current.RequestedTheme;
+            var theme = Windows.UI.Xaml.Application.Current.RequestedTheme;
 
             if(theme == ApplicationTheme.Light)
             {

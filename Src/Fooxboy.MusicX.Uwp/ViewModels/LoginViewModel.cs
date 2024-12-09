@@ -104,7 +104,7 @@ namespace Fooxboy.MusicX.Uwp.ViewModels
                 {
                     var dialog = new ContentDialog();
                     dialog.Title = "Произошла неизвестная ошибка";
-                    dialog.Content = e;
+                    dialog.Content = ex;
                     await dialog.ShowAsync();
                 });
 

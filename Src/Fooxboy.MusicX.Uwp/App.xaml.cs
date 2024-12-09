@@ -15,7 +15,7 @@ using Windows.UI.Xaml.Controls;
 using DryIoc;
 using Windows.UI.Xaml.Navigation;
 using DiscordRPC.Logging;
-using Flurl.Http;
+//using Flurl.Http;
 using Microsoft.AppCenter.Crashes;
 using Fooxboy.MusicX.Core;
 using Fooxboy.MusicX.Uwp.Services;
@@ -127,12 +127,12 @@ namespace Fooxboy.MusicX.Uwp
                                     .AutoAsync(config.AccessTokenVkontakte, null);
 
                             }
-                            catch (FlurlHttpException eee)
+                            /*catch (FlurlHttpException ex)
                             {
-                                _logger.Error("Ошибка сети", eee);
+                                _logger.Error("Ошибка сети", ex);
 
                                 rootFrame.Navigate(typeof(ErrorPage), "Нет доступа к интернету.");
-                            }
+                            }*/
                             catch (VkApiException eee)
                             {
                                 _logger.Error("Ошибка ВКонтакте", eee);

@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Flurl.Http;
+//using Flurl.Http;
 using Fooxboy.MusicX.Core;
 using Fooxboy.MusicX.Core.Interfaces;
 using Fooxboy.MusicX.Core.Models;
@@ -55,17 +55,18 @@ namespace Fooxboy.MusicX.Uwp.ViewModels
                     Blocks.Add(result);
                 }
             }
-            catch (FlurlHttpException e)
-            {
-                _logger.Error("Ошибка сети", e);
-                _notificationService.CreateNotification("Ошибка сети", "Произошла ошибка подключения к сети.",
-                    "Попробовать ещё раз", "Закрыть", new RelayCommand(
-                        async () => { await this.StartLoading(query); }), new RelayCommand(() => { }));
-            }
+            //catch (FlurlHttpException e)
+            //{
+            //    _logger.Error("Ошибка сети", e);
+            //    _notificationService.CreateNotification("Ошибка сети", "Произошла ошибка подключения к сети.",
+            //        "Попробовать ещё раз", "Закрыть", new RelayCommand(
+            //            async () => { await this.StartLoading(query); }), new RelayCommand(() => { }));
+            //}
             catch (Exception e)
             {
                 _logger.Error("Неизвестная ошибка", e);
-                _notificationService.CreateNotification("Невозможно получить результаты поиска.", $"Ошибка: {e.Message}");
+                _notificationService.CreateNotification("Невозможно получить результаты поиска.", 
+                    $"Ошибка: {e.Message}");
             }
 
         }

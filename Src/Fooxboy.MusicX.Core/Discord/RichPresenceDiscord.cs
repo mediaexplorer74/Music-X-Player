@@ -71,9 +71,11 @@ namespace Fooxboy.MusicX.Core.Discord
             {
                 _currentRichPresence.State = $"{artist} - {title}";
                 await SetAsync();
-            }catch(Exception e)
+            }
+            catch(Exception ex)
             {
-
+                System.Diagnostics.Debug.WriteLine("[ex] RichPresenceDiscord - SetTrack bug: " +
+                    ex.Message);
             }
             
         }

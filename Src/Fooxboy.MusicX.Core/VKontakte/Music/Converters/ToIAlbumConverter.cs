@@ -5,7 +5,7 @@ using System.Text;
 using Fooxboy.MusicX.Core.Interfaces;
 using Fooxboy.MusicX.Core.Models;
 using Fooxboy.MusicX.Core.Models.Music.ArtistInfo;
-using VkNet.Model.Attachments;
+using VkNet.Model;//.Attachments;
 
 namespace Fooxboy.MusicX.Core.VKontakte.Music.Converters
 {
@@ -29,7 +29,7 @@ namespace Fooxboy.MusicX.Core.VKontakte.Music.Converters
                 album.AccessKey = playlist.AccessKey;
                 album.OwnerId = playlist.OwnerId ?? 0;
                 album.IsFollowing = playlist.IsFollowing;
-                album.Cover = playlist.Cover?.Photo600;
+                album.Cover = default;//playlist.Cover?.Photo600;
                 album.Artists = new List<IArtist>();
                 if (playlist.MainArtists != null)
                 {

@@ -12,7 +12,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Flurl.Http;
+//using Flurl.Http;
 using Fooxboy.MusicX.Uwp.Views;
 
 namespace Fooxboy.MusicX.Uwp.ViewModels
@@ -89,15 +89,16 @@ namespace Fooxboy.MusicX.Uwp.ViewModels
                 foreach (var a in albums) Albums.Add(a);
                 Changed("Albums");
             }
-            catch (FlurlHttpException)
-            {
-                _notificationService.CreateNotification("Ошибка сети", "Произошла ошибка подключения к сети.",
-                    "Попробовать ещё раз", "Закрыть", new RelayCommand(
-                        async () => { await this.StartLoadingAlbums(); }), new RelayCommand(() => { }));
-            }
+            //catch (FlurlHttpException)
+            //{
+            //    _notificationService.CreateNotification("Ошибка сети", "Произошла ошибка подключения к сети.",
+            //        "Попробовать ещё раз", "Закрыть", new RelayCommand(
+            //            async () => { await this.StartLoadingAlbums(); }), new RelayCommand(() => { }));
+            //}
             catch (Exception e)
             {
-                _notificationService.CreateNotification("Ошибка при загрузке Ваших альбомов", $"Ошибка: {e.Message}");
+                _notificationService.CreateNotification("Ошибка при загрузке Ваших альбомов", 
+                    $"Ошибка: {e.Message}");
 
             }
 
@@ -113,14 +114,14 @@ namespace Fooxboy.MusicX.Uwp.ViewModels
                 _logger.Info($"Возвращено {albums.Count} альбомов.");
                 return albums;
             }
-            catch (FlurlHttpException e)
-            {
-                _logger.Error("Ошибка сети", e);
-                _notificationService.CreateNotification("Ошибка сети", "Произошла ошибка подключения к сети.",
-                    "Попробовать ещё раз", "Закрыть", new RelayCommand(
-                        async () => { await this.LoadAlbums(); }), new RelayCommand(() => { }));
-                return new List<Album>();
-            }
+            //catch (FlurlHttpException e)
+            //{
+            //    _logger.Error("Ошибка сети", e);
+            //    _notificationService.CreateNotification("Ошибка сети", "Произошла ошибка подключения к сети.",
+            //        "Попробовать ещё раз", "Закрыть", new RelayCommand(
+            //            async () => { await this.LoadAlbums(); }), new RelayCommand(() => { }));
+            //    return new List<Album>();
+            //}
             catch (Exception e)
             {
                 _logger.Error("Неизвестная ошибка", e);
@@ -139,13 +140,13 @@ namespace Fooxboy.MusicX.Uwp.ViewModels
 
                 _logger.Info($"Максимальное количество треков: {_maxTracks}");
             }
-            catch (FlurlHttpException e)
-            {
-                _logger.Error("Ошибка сети", e);
-                _notificationService.CreateNotification("Ошибка сети", "Произошла ошибка подключения к сети.",
-                    "Попробовать ещё раз", "Закрыть", new RelayCommand(
-                        async () => { await this.GetMaxTracks(); }), new RelayCommand(() => { }));
-            }
+            //catch (FlurlHttpException e)
+            //{
+            //    _logger.Error("Ошибка сети", e);
+            //    _notificationService.CreateNotification("Ошибка сети", "Произошла ошибка подключения к сети.",
+            //        "Попробовать ещё раз", "Закрыть", new RelayCommand(
+            //            async () => { await this.GetMaxTracks(); }), new RelayCommand(() => { }));
+            //}
             catch (Exception e)
             {
                 _logger.Error("Неизвестная ошибка", e);
@@ -186,12 +187,12 @@ namespace Fooxboy.MusicX.Uwp.ViewModels
 
                 AddTracksToList(tracks);
             }
-            catch (FlurlHttpException)
-            {
-                _notificationService.CreateNotification("Ошибка сети", "Произошла ошибка подключения к сети.",
-                    "Попробовать ещё раз", "Закрыть", new RelayCommand(
-                        async () => { await this.StartLoadingTracks(); }), new RelayCommand(() => { }));
-            }
+            //catch (FlurlHttpException)
+            //{
+            //    _notificationService.CreateNotification("Ошибка сети", "Произошла ошибка подключения к сети.",
+            //        "Попробовать ещё раз", "Закрыть", new RelayCommand(
+            //            async () => { await this.StartLoadingTracks(); }), new RelayCommand(() => { }));
+            //}
             catch (Exception e)
             {
                 _notificationService.CreateNotification("Ошибка при загрузке Ваших треков", $"Ошибка: {e.Message}");
@@ -227,14 +228,14 @@ namespace Fooxboy.MusicX.Uwp.ViewModels
                 _logger.Info($"Загружено {tracks.Count} треков.");
                 return tracks;
             }
-            catch (FlurlHttpException e)
-            {
-                _logger.Error("Ошибка сети", e);
-                _notificationService.CreateNotification("Ошибка сети", "Произошла ошибка подключения к сети.",
-                    "Попробовать ещё раз", "Закрыть", new RelayCommand(
-                        async () => { await this.LoadTracks(); }), new RelayCommand(() => { }));
-                return new List<Track>();
-            }
+            //catch (FlurlHttpException e)
+            //{
+            //    _logger.Error("Ошибка сети", e);
+            //    _notificationService.CreateNotification("Ошибка сети", "Произошла ошибка подключения к сети.",
+            //        "Попробовать ещё раз", "Закрыть", new RelayCommand(
+            //            async () => { await this.LoadTracks(); }), new RelayCommand(() => { }));
+            //    return new List<Track>();
+            //}
             catch (Exception e)
             {
                 _logger.Error("Неизвестная ошибка", e);

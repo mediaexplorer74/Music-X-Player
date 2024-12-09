@@ -8,7 +8,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Flurl.Http;
+//using Flurl.Http;
 using Fooxboy.MusicX.Core;
 using Microsoft.Toolkit.Uwp.Helpers;
 
@@ -71,12 +71,12 @@ namespace Fooxboy.MusicX.Uwp.ViewModels
 
                 }
             }
-            catch (FlurlHttpException e)
-            {
-                _logger.Error("Ошибка сети", e);
-                _notification.CreateNotification("Произошла ошибка",
-                    "Ошибка сети, попробуйте ещё раз или проверте Ваш доступ в Интернет.");
-            }
+            //catch (FlurlHttpException e)
+            //{
+            //    _logger.Error("Ошибка сети", e);
+            //    _notification.CreateNotification("Произошла ошибка",
+            //        "Ошибка сети, попробуйте ещё раз или проверте Ваш доступ в Интернет.");
+            //}
             catch (Exception e)
             {
                 _logger.Error("Неизвестная ошибка", e);

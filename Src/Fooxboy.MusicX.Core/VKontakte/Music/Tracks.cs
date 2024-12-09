@@ -23,7 +23,7 @@ namespace Fooxboy.MusicX.Core.VKontakte.Music
         public async Task<List<ITrack>> GetAsync(int count = 10, int offset =0, string accessKey = null, long? playlistId =null, long? ownerId = null)
         {
             Api.Logger.Trace("[CORE] Запрос audio.get...");
-            var music = await _api.Audio.GetAsync(new VkNet.Model.RequestParams.AudioGetParams()
+            var music = await _api.Audio.GetAsync(new VkNet.Model.AudioGetParams()//.RequestParams.AudioGetParams()
             {
                 Count = count,
                 Offset = offset, 
@@ -67,7 +67,7 @@ namespace Fooxboy.MusicX.Core.VKontakte.Music
         
         public List<ITrack> Get(int count = 10, int offset =0, string accessKey = null, long? playlistId =null, long? ownerId = null)
         {
-            var music =  _api.Audio.Get(new VkNet.Model.RequestParams.AudioGetParams()
+            var music =  _api.Audio.Get(new VkNet.Model.AudioGetParams()//.RequestParams.AudioGetParams()
             {
                 Count = count,
                 Offset = offset, 

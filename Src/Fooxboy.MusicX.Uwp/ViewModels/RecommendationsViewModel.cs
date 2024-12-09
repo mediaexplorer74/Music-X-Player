@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Flurl.Http;
+//using Flurl.Http;
 using Fooxboy.MusicX.Core;
 using Fooxboy.MusicX.Core.Interfaces;
 using Fooxboy.MusicX.Uwp.Converters;
@@ -88,13 +88,13 @@ namespace Fooxboy.MusicX.Uwp.ViewModels
 
                 Changed("Blocks");
             }
-            catch (FlurlHttpException e)
-            {
-                _logger.Error("Ошибка сети", e);
-                _notificationService.CreateNotification("Ошибка сети", "Произошла ошибка подключения к сети.",
-                    "Попробовать ещё раз", "Закрыть", new RelayCommand(
-                        async () => { await this.StartLoading(); }), new RelayCommand(() => { }));
-            }
+            //catch (FlurlHttpException e)
+            //{
+            //    _logger.Error("Ошибка сети", e);
+            //    _notificationService.CreateNotification("Ошибка сети", "Произошла ошибка подключения к сети.",
+            //        "Попробовать ещё раз", "Закрыть", new RelayCommand(
+            //            async () => { await this.StartLoading(); }), new RelayCommand(() => { }));
+            //}
             catch (Exception e)
             {
                 _logger.Error("Неизвестная ошибка", e);

@@ -5,7 +5,7 @@ using System.Text;
 using Fooxboy.MusicX.Core.Interfaces;
 using Fooxboy.MusicX.Core.Models;
 using Fooxboy.MusicX.Core.Models.Music.ArtistInfo;
-using VkNet.Model.Attachments;
+using VkNet.Model;//.Attachments;
 
 namespace Fooxboy.MusicX.Core.VKontakte.Music.Converters
 {
@@ -31,7 +31,7 @@ namespace Fooxboy.MusicX.Core.VKontakte.Music.Converters
                         alb.Id = audio.Album.Id;
                         alb.OwnerId = audio.Album.OwnerId;
                         alb.Title = audio.Album?.Title ?? "";
-                        alb.Cover = audio.Album.Cover?.Photo300;
+                        alb.Cover = default;//audio.Album.Cover?.Photo300;
                         track.Album = alb;
                     }
                     catch

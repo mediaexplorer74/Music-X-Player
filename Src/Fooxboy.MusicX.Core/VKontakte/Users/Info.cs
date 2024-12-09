@@ -7,7 +7,7 @@ using Fooxboy.MusicX.Core.Interfaces;
 using Fooxboy.MusicX.Core.Models;
 using VkNet;
 using VkNet.Enums.Filters;
-using VkNet.Model.RequestParams;
+using VkNet.Model;//.RequestParams;
 
 namespace Fooxboy.MusicX.Core.VKontakte.Users
 {

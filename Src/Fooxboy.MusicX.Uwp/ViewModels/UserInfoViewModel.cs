@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Fooxboy.MusicX.Core;
 using Fooxboy.MusicX.Uwp.Services;
-using Flurl.Http;
+//using Flurl.Http;
 
 namespace Fooxboy.MusicX.Uwp.ViewModels
 {
@@ -44,11 +44,13 @@ namespace Fooxboy.MusicX.Uwp.ViewModels
                 Changed("Name");
                 UserInfo = usr;
                 Changed("UserInfo");
-            }catch(FlurlHttpException e)
-            {
-                _logger.Error("Ошибка сети", e);
-                _notification.CreateNotification("Ошибка сети", "Попробуйте перезапустить приложение или проверить доступ к Интернету.");
-            }catch(Exception e)
+            }
+            //catch(FlurlHttpException e)
+            //{
+            //    _logger.Error("Ошибка сети", e);
+            //    _notification.CreateNotification("Ошибка сети", "Попробуйте перезапустить приложение или проверить доступ к Интернету.");
+            //}
+            catch(Exception e)
             {
                 _logger.Error("Неизвестная ошибка", e);
                 _notification.CreateNotification("Неизвестная ошибка", "Произошла неизвестная ошибка, подробнее в логах приложения.");
