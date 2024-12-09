@@ -1,21 +1,36 @@
-# Music X Player
-## **Music X - Музыкальный плеер ВКонтакте для Windows 10**
+# Music X Player - ветка ver2_uwp 
+![](/Images/logo.png)
 
-Актуальный плеер, переписанный с нуля, теперь тут: https://github.com/Fooxboy/MusicX-WPF
+## О проекте 
+Music X - это мой форк музыкального плеера для в основном русскоговорящей социальной сети ВКонтакте, причем мультиплатформенный (для девайсов 
+на операционных системах Windows и Android). 
 
-Скриншоты:
-[![Стартовый экран](https://raw.githubusercontent.com/Fooxboy/Fooxboy.github.io/master/img/musicXHello.png "Стартовый экран")](https://raw.githubusercontent.com/Fooxboy/Fooxboy.github.io/master/img/musicXHello.png "Стартовый экран")
+Автором первоначального проекта является разработчик с ником Fooxboy. Fooxboy перевёл сей проект в режим read-only (по сути архив), но со своей командой пилит практически с нуля новый плеер: https://github.com/Fooxboy/MusicX-WPF
 
-[![Авторизация](https://raw.githubusercontent.com/Fooxboy/Fooxboy.github.io/master/img/musicXAuth.png "Авторизация")](https://raw.githubusercontent.com/Fooxboy/Fooxboy.github.io/master/img/musicXAuth.png "Авторизация")
+Готовую beta-версию можно качнуть (или обсудить) в Telegram-канале https://t.me/MusicXPlayer
 
-[![Стартовый экран](https://raw.githubusercontent.com/Fooxboy/Fooxboy.github.io/master/img/musicXHomeScreen.png "Стартовый экран")](https://raw.githubusercontent.com/Fooxboy/Fooxboy.github.io/master/img/musicXHomeScreen.png "Стартовый экран")
+## Зачем мне это?
+Я давний фанат ретро-системы Windows 10 Mobile. В качестве хобби, чисто по фану, иногда рождаю "прототипы" (читай - черновички) всяких там программочек- "полезняшек" (или наоборот, бесполезняшек) для этой отмененной Майками мобильной системы. Не так давно узнал я "тайну", что, оказывается, Windows 10 Mobile, начиная со сборки 15063 то умеет частично вращать uwp приложения, собранные с применением фишек SDK 16299 и .NET Standard 2! И вот родилась у меня мысль: а вдруг Music X Player я таким образом смогу адаптировать к работе на Windows 10 Mobile? =)
 
-Гифки:
+## Мои два цента
+- Из солюшна исключены 2 вспом. проекта (но не удалены)
+- Для проект UWP мин. версия понижена до 16299 (но кое-что надо будет переделать, щас это закоментировано в коде)
+- Из XAML почиканы  CanBeScrollAnchor, BackgroundSizing, BlurRadius, CornerRadius и Shadow для повышения вероятности успешного старта форка на моем винфоне Lumia 950 с W10M 15254.
+- В .csproj и manifest внесены хакерские правки для попытки обеспечения совместимости с W10M!
 
-[![gif](https://raw.githubusercontent.com/Fooxboy/Fooxboy.github.io/master/img/1.gif "gif")](https://raw.githubusercontent.com/Fooxboy/Fooxboy.github.io/master/img/1.gif "gif")
+## Статус эксперимента
+- Начало
 
-[![gif2](https://raw.githubusercontent.com/Fooxboy/Fooxboy.github.io/master/img/2.gif "gif2")](https://raw.githubusercontent.com/Fooxboy/Fooxboy.github.io/master/img/2.gif "gif2")
+## Благодарности / Ссылки / Кредит доверия
+- https://github.com/Fooxboy/Music-X-Player Оригинальный проект
+- https://github.com/Fooxboy Разработчик оригинального Music X Player
 
-[![gif3](https://raw.githubusercontent.com/Fooxboy/Fooxboy.github.io/master/img/3_2.gif "gif3")](https://raw.githubusercontent.com/Fooxboy/Fooxboy.github.io/master/img/3_2.gif "gif3")
+## .. 
+Как есть. Чисто исследовательская тема. Сделай сам.
 
-Скачать beta версию можно в Telegram канале: https://t.me/MusicXPlayer
+## .
+mediaexplorer 
+
+9 декабря 2024  
+
+![](/Images/welcome.png)
