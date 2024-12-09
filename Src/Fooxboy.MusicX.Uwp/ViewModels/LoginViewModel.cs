@@ -90,9 +90,10 @@ namespace Fooxboy.MusicX.Uwp.ViewModels
                     await dialog.ShowAsync();
                 });
             }
-            catch(Exception e)
+            catch(Exception ex)
             {
-                _logger.Error("Неизвестная ошибка", e);
+                System.Diagnostics.Debug.WriteLine("[ex] LoginViewModel - Auth exception: " + ex.Message);
+                _logger.Error("Неизвестная ошибка", ex);
                 IsLoading = false;
                 VisibilityTextBox = true;
                 Changed("IsLoading");
