@@ -45,7 +45,7 @@ namespace Fooxboy.MusicX.Core.VKontakte.Music
         public  IList<ITrack> Tracks(string text, long count = 20, long offset = 0, bool withLyrics = false,
             bool performerOnly = false, bool searchInLibrary = true)
         {
-            var music = _api.Audio.Search(new VkNet.Model.AudioSearchParams()//RequestParams.AudioSearchParams()
+            var music = _api.Audio.Search(new VkNet.Model.AudioSearchParams()//.RequestParams.AudioSearchParams()
             {
                 Query = text,
                 Autocomplete = true,

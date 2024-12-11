@@ -4,19 +4,19 @@
   xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
   xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
-  xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
-  IgnorableNamespaces="uap mp uap3">
+   xmlns:uap5="http://schemas.microsoft.com/appx/manifest/uap/windows10/5"
+  IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="39634Fooxboy.MusicXPlayerBeta"
+    Name="ME.MusicXV2p0p51"
     Publisher="CN=Admin"
-    Version="2.0.50.0" />
+    Version="2.0.51.0" />
 
-  <mp:PhoneIdentity PhoneProductId="911ba3a9-0afb-4a63-8225-0236fa4646cf" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="ddca6a77-c70c-48bb-8290-04de0c8cf777" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>Music X Player Beta</DisplayName>
-    <PublisherDisplayName>Fooxboy</PublisherDisplayName>
+    <DisplayName>Fooxboy.MusicX v2.0.51</DisplayName>
+    <PublisherDisplayName>Admin</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
@@ -31,30 +31,31 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="Fooxboy.MusicX.Uwp.App">
+      EntryPoint="YaMu.App">
       <uap:VisualElements
-        DisplayName="Music X Beta"
+        DisplayName="Fooxboy.MusicX 2.0.51"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="Music X - Музыкальный плеер с поддержкой музыки ВКонтакте."
-        BackgroundColor="white">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square71x71Logo="Assets\SmallTile.png" Square310x310Logo="Assets\LargeTile.png" ShortName="Music X">
+        Description="YaMu, experimental lite client for Yandex Music"
+        BackgroundColor="transparent">
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square71x71Logo="Assets\SmallTile.png" Square310x310Logo="Assets\LargeTile.png" ShortName="ms-resource:AppName">
           <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="square150x150Logo"/>
             <uap:ShowOn Tile="square310x310Logo"/>
             <uap:ShowOn Tile="wide310x150Logo"/>
-            <uap:ShowOn Tile="square150x150Logo"/>
           </uap:ShowNameOnTiles>
         </uap:DefaultTile >
-        <uap:SplashScreen Image="Assets\SplashScreen.png"  BackgroundColor="white"/>
+        <uap:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#0085ff" />
         <uap:InitialRotationPreference>
-          <uap:Rotation Preference="landscape"/></uap:InitialRotationPreference>
-        <uap:LockScreen BadgeLogo="Assets\BadgeLogo.png" Notification="badge"/>
+          <uap:Rotation Preference="landscape"/>
+          <uap:Rotation Preference="portrait"/>
+          <uap:Rotation Preference="landscapeFlipped"/>
+        </uap:InitialRotationPreference>
       </uap:VisualElements>
     </Application>
   </Applications>
 
   <Capabilities>
-    <uap3:Capability Name="backgroundMediaPlayback"/>
-    <Capability Name="internetClient"/>
+    <Capability Name="internetClient" />
   </Capabilities>
 </Package>

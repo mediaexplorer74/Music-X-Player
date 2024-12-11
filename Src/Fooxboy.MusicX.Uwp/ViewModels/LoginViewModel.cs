@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Fooxboy.MusicX.Core;
+using System.Diagnostics;
 
 namespace Fooxboy.MusicX.Uwp.ViewModels
 {
@@ -55,30 +56,39 @@ namespace Fooxboy.MusicX.Uwp.ViewModels
 
             try
             {
-                var api = _container.Resolve<Core.Api>();
-                var token = await api.VKontakte.Auth.UserAsync(Login, Password, TwoFactorAuth, null);
-                var tokenService = _container.Resolve<TokenService>();
+                Api api = _container.Resolve<Core.Api>();
+                
+                string token = await api.VKontakte.Auth.UserAsync(Login, Password, TwoFactorAuth, null);
+              
+                TokenService tokenService = _container.Resolve<TokenService>();
+                
                 await tokenService.Save(token);
                 _logger.Info("Успешная авторизация.");
                 _logger.Trace("Попытка получить информацию о пользователе...");
-                var user = await api.VKontakte.Users.Info.CurrentUserAsync();
+
+                var user= await api.VKontakte.Users.Info.CurrentUserAsync();
+                //Core.Interfaces.IUserInfo user = userT.Result;
+
                 _logger.Info($"Информация о пользователе получена. Авторизован: {user.FirstName} {user.LastName}");
                 Image = user.PhotoUser;
+
                 VisibilityLogoImage = false;
                 VisibilityPersonImage = true;
+
                 Image = user.PhotoUser;
+
                 Changed("VisibilityLogoImage");
                 Changed("VisibilityPersonImage");
                 Changed("Image");
 
-
-                await Task.Delay(3000);
+                await Task.Delay(3000); // ?
                 var currentFrame = Window.Current.Content as Frame;
                 currentFrame?.Navigate(typeof(RootWindow), _container);
             }
-            catch(VkNet.AudioBypassService.Exceptions.VkAuthException e)
+            catch(VkNet.AudioBypassService.Exceptions.VkAuthException ex)
             {
-                _logger.Error("Ошибка авторизации", e);
+                Debug.WriteLine("[ex] Ошибка авторизации: " + ex.Message);
+                _logger.Error("Ошибка авторизации", ex);
                 IsLoading = false;
                 VisibilityTextBox = true;
                 Changed("IsLoading");
@@ -89,10 +99,11 @@ namespace Fooxboy.MusicX.Uwp.ViewModels
                     var dialog = new IncorrectLoginOrPasswordContentDialog();
                     await dialog.ShowAsync();
                 });
+                
             }
             catch(Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine("[ex] LoginViewModel - Auth exception: " + ex.Message);
+                Debug.WriteLine("[ex] LoginViewModel - Auth exception: " + ex.Message);
                 _logger.Error("Неизвестная ошибка", ex);
                 IsLoading = false;
                 VisibilityTextBox = true;

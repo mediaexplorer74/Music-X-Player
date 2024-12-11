@@ -20,7 +20,9 @@ namespace Fooxboy.MusicX.Core
         public static Api GetApi(ILoggerService logger)
         {
             Logger = logger;
-            if(_api == null) _api = new Api();
+
+            if(_api == null) 
+                _api = new Api();
 
             return _api;
         }

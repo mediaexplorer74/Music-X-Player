@@ -29,13 +29,9 @@ using Fooxboy.MusicX.Core;
 using VkNet.AudioBypassService.Models;
 
 
-// Документацию по шаблону элемента "Пустая страница" см. по адресу https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Fooxboy.MusicX.Uwp.Views
 {
-    /// <summary>
-    /// Пустая страница, которую можно использовать саму по себе или для перехода внутри фрейма.
-    /// </summary>
     public sealed partial class RootWindow : Windows.UI.Xaml.Controls.Page
     {
         public PlayerViewModel PlayerViewModel { get; set; }
@@ -185,7 +181,9 @@ namespace Fooxboy.MusicX.Uwp.Views
             await Animations.BeginAsync();
             //RectangleBackground.Height = +500;
             BigPlayerFrame.Visibility = Visibility.Visible;
-            BigPlayerFrame.Navigate(typeof(PlayerView), PlayerViewModel, new DrillInNavigationTransitionInfo());
+
+            BigPlayerFrame.Navigate(typeof(PlayerView), 
+                PlayerViewModel, new DrillInNavigationTransitionInfo());
 
         }
 
@@ -250,19 +248,24 @@ namespace Fooxboy.MusicX.Uwp.Views
                         try
                         {
                             var artist = PlayerViewModel.PlayerSerivce.CurrentTrack.Artists[0];
-                            navigation.Go(typeof(ArtistView), new object[] { api, notificationService, artist.Id, player, logger }, 1);
+
+                            navigation.Go(typeof(ArtistView), new object[] 
+                                { api, notificationService, artist.Id, player, logger }, 1);
                             return;
                         }
                         catch (Exception ee)
                         {
-                            notificationService.CreateNotification("Ошибка при открытии карточки музыканта", $"Ошибка: {ee.Message}");
+                            notificationService.CreateNotification(
+                                "Ошибка при открытии карточки музыканта", $"Ошибка: {ee.Message}");
                             return;
                         }
                     }
                 }
 
-                navigation.Go(typeof(SearchView), new object[] { PlayerViewModel.Artist, api, notificationService, logger }, 1);
-            }catch(Exception ex)
+                navigation.Go(typeof(SearchView), new object[] 
+                { PlayerViewModel.Artist, api, notificationService, logger }, 1);
+            }
+            catch(Exception ex)
             {
 
                 await DispatcherHelper.ExecuteOnUIThreadAsync(async () =>

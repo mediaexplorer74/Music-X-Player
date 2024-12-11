@@ -254,7 +254,11 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <!--<my:NotificationControl Title="Мое уведомление" Description="Описание блять" HasButtons="True" ButtonTwoText="СОСМЫСЛОМ" ButtonOneText="Окей"/>-->
+            <my:NotificationControl 
+                Title="Мое уведомление" Description="Описание" 
+                HasButtons="True" 
+                ButtonTwoText="СОСМЫСЛОМ" 
+                ButtonOneText="Окей"/>
         </Grid>
 
         <Grid

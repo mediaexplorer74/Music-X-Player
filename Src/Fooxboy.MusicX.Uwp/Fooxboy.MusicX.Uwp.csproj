@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{B1E377A9-DFF4-487B-8CE0-E623ADD3576E}</ProjectGuid>
+    <ProjectGuid>{FEBDF715-48BB-46F2-ABC6-6FF32131B5B0}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Fooxboy.MusicX.Uwp</RootNamespace>
-    <AssemblyName>Fooxboy.MusicX.Uwp</AssemblyName>
+    <RootNamespace>Fooxboy.MusicX</RootNamespace>
+    <AssemblyName>Fooxboy.MusicX</AssemblyName>
     <DefaultLanguage>ru</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.19041.0</TargetPlatformVersion>
@@ -29,7 +29,7 @@
     <PackageCertificateKeyFile>Fooxboy.MusicX.Uwp_TemporaryKey.pfx</PackageCertificateKeyFile>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
-    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>arm</AppxBundlePlatforms>
@@ -70,6 +70,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
     <OutputPath>bin\ARM\Release\</OutputPath>
@@ -117,6 +118,8 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>false</UseDotNetNativeToolchain>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>bin\x64\Release\</OutputPath>
@@ -141,8 +144,17 @@
     <Compile Include="ContentDialogs\AboutContentDialog.xaml.cs">
       <DependentUpon>AboutContentDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ContentDialogs\IncorrectLoginOrPasswordContentDialog.xaml.cs">
+      <DependentUpon>IncorrectLoginOrPasswordContentDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ContentDialogs\SettingsContentDialog.xaml.cs">
       <DependentUpon>SettingsContentDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContentDialogs\ThanksBuyProContentDialog.xaml.cs">
+      <DependentUpon>ThanksBuyProContentDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContentDialogs\TwoFactorAuthContentDialog.xaml.cs">
+      <DependentUpon>TwoFactorAuthContentDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\BlockControl.xaml.cs">
       <DependentUpon>BlockControl.xaml</DependentUpon>
@@ -150,8 +162,14 @@
     <Compile Include="Controls\NotificationControl.xaml.cs">
       <DependentUpon>NotificationControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\PlaylistControl.xaml.cs">
+      <DependentUpon>PlaylistControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\RepeatButton.xaml.cs">
       <DependentUpon>RepeatButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TrackControl.xaml.cs">
+      <DependentUpon>TrackControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\AlbumConverter.cs" />
     <Compile Include="Converters\AudioTimeConverter.cs" />
@@ -177,21 +195,6 @@
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RelayCommand.cs" />
-    <Compile Include="ContentDialogs\IncorrectLoginOrPasswordContentDialog.xaml.cs">
-      <DependentUpon>IncorrectLoginOrPasswordContentDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ContentDialogs\ThanksBuyProContentDialog.xaml.cs">
-      <DependentUpon>ThanksBuyProContentDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ContentDialogs\TwoFactorAuthContentDialog.xaml.cs">
-      <DependentUpon>TwoFactorAuthContentDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\PlaylistControl.xaml.cs">
-      <DependentUpon>PlaylistControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\TrackControl.xaml.cs">
-      <DependentUpon>TrackControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Services\AlbumLoaderService.cs" />
     <Compile Include="Services\AppPrivateSettingsService.cs" />
     <Compile Include="Services\ConfigService.cs" />
@@ -205,8 +208,8 @@
     <Compile Include="Services\NotificationService.cs" />
     <Compile Include="Services\PlayerService.cs" />
     <Compile Include="Services\StoreService.cs" />
-    <Compile Include="Services\TrackLoaderService.cs" />
     <Compile Include="Services\TokenService.cs" />
+    <Compile Include="Services\TrackLoaderService.cs" />
     <Compile Include="ViewModels\AllPlaylistsViewModel.cs" />
     <Compile Include="ViewModels\AllTracksViewModel.cs" />
     <Compile Include="ViewModels\ArtistViewModel.cs" />
@@ -281,6 +284,56 @@
     <Content Include="Assets\BadgeLogo.scale-150.png" />
     <Content Include="Assets\BadgeLogo.scale-200.png" />
     <Content Include="Assets\BadgeLogo.scale-400.png" />
+    <Content Include="Assets\custom-twitter\LargeTile.scale-100.png" />
+    <Content Include="Assets\custom-twitter\LargeTile.scale-125.png" />
+    <Content Include="Assets\custom-twitter\LargeTile.scale-150.png" />
+    <Content Include="Assets\custom-twitter\LargeTile.scale-200.png" />
+    <Content Include="Assets\custom-twitter\LargeTile.scale-400.png" />
+    <Content Include="Assets\custom-twitter\SmallTile.scale-100.png" />
+    <Content Include="Assets\custom-twitter\SmallTile.scale-125.png" />
+    <Content Include="Assets\custom-twitter\SmallTile.scale-150.png" />
+    <Content Include="Assets\custom-twitter\SmallTile.scale-200.png" />
+    <Content Include="Assets\custom-twitter\SmallTile.scale-400.png" />
+    <Content Include="Assets\custom-twitter\SplashScreen.scale-100.png" />
+    <Content Include="Assets\custom-twitter\SplashScreen.scale-125.png" />
+    <Content Include="Assets\custom-twitter\SplashScreen.scale-150.png" />
+    <Content Include="Assets\custom-twitter\SplashScreen.scale-200.png" />
+    <Content Include="Assets\custom-twitter\SplashScreen.scale-400.png" />
+    <Content Include="Assets\custom-twitter\Square150x150Logo.scale-100.png" />
+    <Content Include="Assets\custom-twitter\Square150x150Logo.scale-125.png" />
+    <Content Include="Assets\custom-twitter\Square150x150Logo.scale-150.png" />
+    <Content Include="Assets\custom-twitter\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\custom-twitter\Square150x150Logo.scale-400.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.altform-lightunplated_targetsize-16.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.altform-lightunplated_targetsize-24.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.altform-lightunplated_targetsize-256.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.altform-lightunplated_targetsize-32.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.altform-lightunplated_targetsize-48.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.altform-unplated_targetsize-16.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.altform-unplated_targetsize-24.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.altform-unplated_targetsize-256.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.altform-unplated_targetsize-32.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.altform-unplated_targetsize-48.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.scale-100.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.scale-125.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.scale-150.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.scale-400.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.targetsize-16.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.targetsize-24.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.targetsize-256.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.targetsize-32.png" />
+    <Content Include="Assets\custom-twitter\Square44x44Logo.targetsize-48.png" />
+    <Content Include="Assets\custom-twitter\StoreLogo.scale-100.png" />
+    <Content Include="Assets\custom-twitter\StoreLogo.scale-125.png" />
+    <Content Include="Assets\custom-twitter\StoreLogo.scale-150.png" />
+    <Content Include="Assets\custom-twitter\StoreLogo.scale-200.png" />
+    <Content Include="Assets\custom-twitter\StoreLogo.scale-400.png" />
+    <Content Include="Assets\custom-twitter\Wide310x150Logo.scale-100.png" />
+    <Content Include="Assets\custom-twitter\Wide310x150Logo.scale-125.png" />
+    <Content Include="Assets\custom-twitter\Wide310x150Logo.scale-150.png" />
+    <Content Include="Assets\custom-twitter\Wide310x150Logo.scale-200.png" />
+    <Content Include="Assets\custom-twitter\Wide310x150Logo.scale-400.png" />
     <Content Include="Assets\Icons\audio_black.svg" />
     <Content Include="Assets\Icons\audio_white.svg" />
     <Content Include="Assets\Icons\delete_black.svg" />
@@ -300,8 +353,8 @@
     <Content Include="Assets\Icons\settings_white.svg" />
     <Content Include="Assets\Icons\volume_black.svg" />
     <Content Include="Assets\Icons\volume_white.svg" />
-    <Content Include="Assets\Images\logo-white.png" />
     <Content Include="Assets\Images\logo-black.png" />
+    <Content Include="Assets\Images\logo-white.png" />
     <Content Include="Assets\Images\placeholder-album.jpg" />
     <Content Include="Assets\Images\placeholder-artist.jpg" />
     <Content Include="Assets\Images\placeholder-track.jpg" />
@@ -343,6 +396,7 @@
     <Content Include="Assets\Square44x44Logo.targetsize-256.png" />
     <Content Include="Assets\Square44x44Logo.targetsize-32.png" />
     <Content Include="Assets\Square44x44Logo.targetsize-48.png" />
+    <Content Include="Assets\StoreLogo.backup.png" />
     <Content Include="Assets\StoreLogo.scale-100.png" />
     <Content Include="Assets\StoreLogo.scale-125.png" />
     <Content Include="Assets\StoreLogo.scale-150.png" />
@@ -361,156 +415,42 @@
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Page Include="ContentDialogs\AboutContentDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ContentDialogs\IncorrectLoginOrPasswordContentDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ContentDialogs\SettingsContentDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ContentDialogs\ThanksBuyProContentDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ContentDialogs\TwoFactorAuthContentDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\BlockControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\NotificationControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\PlaylistControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\RepeatButton.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\TrackControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="DataTemplates\PlaylistDataTemplate.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="DataTemplates\TrackDataTemplate.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Styles\AcrylicStyle.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Styles\ButtonsStyles.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Styles\ListViewStyle.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Styles\ProfileImageStyles.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Styles\SliderStyle.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Styles\TextBoxStyles.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\Dark.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\Light.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\AllPlaylistsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\AllTracksView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ArtistView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\DeveloperView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\DownloadsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ErrorPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\FavoriteArtistsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\HomeView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\LoginView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\NewVersionView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\PlayerView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\PlaylistView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\RecommendationsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\RootWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\SearchView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\WelcomeView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
+    <!--PackageReference Include="CommunityToolkit.Mvvm">
+      <Version>8.3.2</Version>
+    </PackageReference>
+    <PackageReference Include="Humanizer.Core">
+      <Version>2.14.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging">
+      <Version>9.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug">
+      <Version>9.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>6.2.14</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI">
+      <Version>6.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Media">
+      <Version>6.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Animations">
+      <Version>6.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.UI.Xaml">
+      <Version>2.7.3</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
+      <Version>2.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="CommunityToolkit.Labs.Extensions.DependencyInjection">
+      <Version>0.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.3</Version>
+    </PackageReference-->
     <PackageReference Include="DryIoc">
       <Version>4.8.6</Version>
     </PackageReference>
@@ -549,14 +489,174 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <SDKReference Include="Microsoft.VCLibs, Version=14.0">
-      <Name>Visual C++ 2015 Runtime for Universal Windows Platform Apps</Name>
+    <SDKReference Include="WindowsDesktop, Version=10.0.19041.0">
+      <Name>Windows Desktop Extensions for the UWP</Name>
     </SDKReference>
+    <SDKReference Include="WindowsMobile, Version=10.0.19041.0">
+      <Name>Windows Mobile Extensions for the UWP</Name>
+    </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="ContentDialogs\AboutContentDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ContentDialogs\IncorrectLoginOrPasswordContentDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ContentDialogs\SettingsContentDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ContentDialogs\ThanksBuyProContentDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ContentDialogs\TwoFactorAuthContentDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\BlockControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\NotificationControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\PlaylistControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\RepeatButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\TrackControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DataTemplates\PlaylistDataTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DataTemplates\TrackDataTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\AcrylicStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ButtonsStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ListViewStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ProfileImageStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\SliderStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\TextBoxStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Dark.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Light.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AllPlaylistsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AllTracksView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ArtistView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DeveloperView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DownloadsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ErrorPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\FavoriteArtistsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\HomeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\LoginView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\NewVersionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PlayerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PlaylistView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\RecommendationsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\RootWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SearchView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\WelcomeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\fluentui.ttf" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fooxboy.MusicX.Core\Fooxboy.MusicX.Core.csproj">
       <Project>{dc2f5311-ffb3-4810-8980-cc6ad7c036e0}</Project>
       <Name>Fooxboy.MusicX.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VkNet.AudioBypassService\VkNet.AudioBypassService.csproj">
+      <Project>{bcd8c460-d44e-6df4-808e-b824c7ae9bed}</Project>
+      <Name>VkNet.AudioBypassService</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -90,7 +90,8 @@ namespace Fooxboy.MusicX.Uwp
                     }
                 }
                 _logger.Trace("Инициализвция AppCenter..");
-                AppCenter.Start("96c77488-34ce-43d0-b0d3-c4b1ce326c7f", typeof(Analytics), typeof(Push), typeof(Crashes));
+                AppCenter.Start("96c77488-34ce-43d0-b0d3-c4b1ce326c7f", 
+                    typeof(Analytics), typeof(Push), typeof(Crashes));
                 AppCenter.LogLevel = LogLevel.Verbose;
                 CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
                 

@@ -14,7 +14,7 @@ namespace Fooxboy.MusicX.Core.VKontakte
         public Vk()
         {
             var services = new ServiceCollection();
-            services.AddAudioBypass();
+            //services.AddAudioBypass();
             vkApi = new VkApi(services);
             Auth = new Auth(vkApi);
             Music = new MusicApi(vkApi);
