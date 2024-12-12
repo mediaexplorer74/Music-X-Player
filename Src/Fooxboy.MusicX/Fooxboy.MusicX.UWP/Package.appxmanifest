@@ -11,9 +11,9 @@
 
   <Identity
     Publisher="CN=Admin"
-    Version="3.0.1.0"  Name="Fooxboy.MusicXV3"/>
+    Version="3.0.3.0"  Name="Fooxboy.MusicXV3p0p3"/>
 
-  <mp:PhoneIdentity PhoneProductId="ec0cc741-fd3e-485c-81be-68815c480690" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="ec0cc741-fd33-485c-81be-68813c480690" PhonePublisherId="00050000-0005-0500-0030-000550000003"/>
 
   <Properties>
     <DisplayName>MusicX 3 Template</DisplayName>

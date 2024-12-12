@@ -5,16 +5,26 @@
 
     <StackLayout>
         <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+            <Label Text="Welcome to Xamarin.Forms 4.8!" HorizontalTextAlignment="Center" 
+                   TextColor="LightGreen" FontSize="24"/>
         </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
-        <Label FontSize="16" Padding="30,24,30,0">
+        
+        <Label Text="+ Access to the tens of thousands of new APIs added in .NET Standard 2.0" 
+               FontSize="16" Padding="30,0,10,0"/>
+        <Label Text="+ Access to the thousands of libraries that require > .NET Standard 1.4" 
+               FontSize="16" Padding="30,0,10,0"/>
+        <Label Text="+ The new .NET Native compiler with much better support for unsafe and optimised code" 
+       FontSize="16" Padding="30,0,10,0"/>
+        <Label Text="+ The ability to target ARM64 as well as 32-bit ARM without multiple project files/configurations" 
+       FontSize="16" Padding="30,0,10,0"/>
+        
+        <Label FontSize="16" Padding="30,24,10,0">
             <Label.FormattedText>
                 <FormattedString>
                     <FormattedString.Spans>
                         <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
+                        <Span Text="https://gist.github.com/WamWooWam/e72e5137606f7c59ed657db6587cd5e8" 
+                              FontAttributes="Bold"/>
                     </FormattedString.Spans>
                 </FormattedString>
             </Label.FormattedText>
